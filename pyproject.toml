@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "project-ia-hematology-scanned-slides-backend"
+version = "0.1.0"
+description = ""
+authors = ["Lucas Praciano <luskcct@gmail.com>"]
+readme = "README.md"
+packages = [{include = "project_ia_hematology_scanned_slides_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+psycopg = {extras = ["binary", "pool"], version = "^3.1.12"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.23"}
+pydantic = "^2.4.2"
+dynaconf = "^3.2.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

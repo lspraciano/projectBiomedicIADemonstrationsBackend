@@ -25,7 +25,7 @@ settings: Dynaconf = Dynaconf(
     env_switcher="IAHEMSCAN_APP_RUNNING_MODE",
     validators=[
         Validator(
-            "APP_RUNNING_MODE",
+            names="APP_RUNNING_MODE",
             must_exist=True,
         )
     ],

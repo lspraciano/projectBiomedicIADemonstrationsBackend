@@ -79,12 +79,12 @@ async def _run_app_tests():
 
 if __name__ == "__main__":
     app_mode: str = "testing"
-    os.environ["BEQVISIONAPI_APP_RUNNING_MODE"] = app_mode
+    os.environ["IAHEMSCAN_APP_RUNNING_MODE"] = app_mode
 
     import asyncio
     from app.core.database.database import engine_async, ModelBase
     from configuration.configs import settings
-    from app.models import *
+    from app.core.models import *
 
     print("RUNNING MODE: " + settings["APP_RUNNING_MODE"])
 

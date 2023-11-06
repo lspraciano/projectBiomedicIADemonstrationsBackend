@@ -36,7 +36,7 @@ if (
         or
         "poetry run python -m run_tests".
 
-        If this is not the case, check the GLWAPI_APP_RUNNING_MODE
+        If this is not the case, check the IAHEMSCAN_APP_RUNNING_MODE
         environment variable and try again
         """
     )
@@ -47,12 +47,13 @@ if (
 )
 async def async_client() -> Generator:
     """
-    A fixture that provides an asynchronous client for testing.
+    Creates an async client for the API.
 
-    Returns:
-        Generator: An asynchronous client that can be used for
-        making asynchronous requests.
+    **Returns**
+
+    An AsyncClient object.
     """
+
     async with AsyncClient(
             app=app,
             base_url=f"http://{settings.API_URL}"
@@ -65,11 +66,13 @@ async def async_client() -> Generator:
 )
 def event_loop() -> Generator:
     """
-    A fixture that provides an asyncio event loop for testing.
+    Creates an event loop.
 
-    Returns:
-        Generator: An asyncio event loop that can be used for asynchronous operations.
+    **Returns**
+
+    An event loop object.
     """
+
     loop: AbstractEventLoop = asyncio.get_event_loop_policy().new_event_loop()
     yield loop
     loop.close()

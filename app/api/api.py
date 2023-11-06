@@ -10,11 +10,13 @@ from configuration.configs import settings
 
 def api_factory() -> FastAPI:
     """
-    Creates a new FastAPI application.
+    Creates a FastAPI application with CORS enabled and the specified project metadata.
 
-    Returns:
-        A new FastAPI application.
+    **Returns**
+
+    A FastAPI application.
     """
+
     origins: list = ["*"]
     project_metadata: Dict = get_project_metadata()
 
@@ -54,16 +56,15 @@ def register_events(
         api: FastAPI
 ) -> FastAPI:
     """
-    Register event handlers for a FastAPI application.
+    Registers startup and shutdown events for the specified FastAPI application.
 
-    This function registers event handlers for the FastAPI application,
-    such as startup and shutdown events.
+    **Parameters**
 
-    Args:
-        api (FastAPI): The FastAPI application instance.
+    * **api** (FastAPI): The FastAPI application to register events for.
 
-    Returns:
-        FastAPI: The FastAPI application with event handlers registered.
+    **Returns**
+
+    The FastAPI application with the events registered.
     """
 
     @api.on_event("startup")

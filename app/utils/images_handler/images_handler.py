@@ -7,15 +7,17 @@ def image_to_bytes(
         image: Image
 ) -> bytes:
     """
-    Converts an Image object to a bytes object.
+    Converts a Pillow Image object to bytes.
 
-    Args:
-        image: The Image object to convert.
+    **Parameters**
 
-    Returns:
-        A bytes object containing the image data.
+    * **image** (Image): A Pillow Image object.
+
+    **Returns**
+
+    A bytes object containing the image data.
     """
+
     buff: BytesIO = BytesIO()
     image.save(buff, format="JPEG")
     return buff.getvalue()
-

@@ -11,17 +11,21 @@ def validate_date_field(
     """
     Validates a date field.
 
-    Args:
-        value: The value of the date field.
-        field_name: The name of the date field.
-        date_format: The format of the date field.
+    **Parameters**
 
-    Returns:
-        A datetime object representing the date field, or None if the date field is not valid.
+    * **value** (str): The value of the date field.
+    * **field_name** (str): The name of the date field.
+    * **date_format** (str): The format of the date field.
 
-    Raises:
-        HTTPException: If the date field is not valid.
+    **Returns**
+
+    A datetime object representing the date.
+
+    **Raises**
+
+    * **HTTPException**: If the date field is not valid.
     """
+
     try:
         date = datetime.strptime(
             value,

@@ -1,1 +1,1 @@
-from app.core.models.processed_images import ProcessedImages
+from app.core.models.processed_images_model import ProcessedImagesModel

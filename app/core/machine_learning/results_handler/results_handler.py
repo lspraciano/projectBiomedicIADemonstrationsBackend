@@ -10,15 +10,18 @@ def convert_result_to_dict(
         classes: Dict
 ) -> Dict:
     """
-    Converts a YOLOv8 Results object to a dictionary.
+    Converts a YOLO detection result to a dictionary.
 
-    Args:
-        result: The YOLOv8 Results object to convert.
-        classes: A dictionary mapping class IDs to class names.
+    **Parameters**
 
-    Returns:
-        A dictionary containing the number of detections for each class.
+    * **result** (Results): A YOLO detection result.
+    * **classes** (Dict): A dictionary mapping class IDs to class names.
+
+    **Returns**
+
+    A dictionary mapping class names to counts.
     """
+
     counts: Dict = {}
     detected_classes: List[float] = result.boxes.cls.tolist()
 
@@ -35,14 +38,17 @@ def get_plotted_image_from_result(
         result: Results
 ) -> Image:
     """
-    Generates a plotted image from a YOLOv8 Results object.
+    Converts a YOLO detection result to a Pillow Image object.
 
-    Args:
-        result: The YOLOv8 Results object to generate the plotted image from.
+    **Parameters**
 
-    Returns:
-        A PIL Image object containing the plotted image.
+    * **result** (Results): A YOLO detection result.
+
+    **Returns**
+
+    A Pillow Image object containing the detections.
     """
+
     predict_plotted_array: ndarray = result.plot()
     image_from_array: Image = Image.fromarray(predict_plotted_array[..., ::-1])
     return image_from_array

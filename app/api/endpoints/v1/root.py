@@ -16,10 +16,13 @@ router = APIRouter(
     status_code=status.HTTP_200_OK,
     response_model=RootResponse
 )
-async def health_check_():
+async def check_metadata_():
     """
-    This route allows to check app metadata.
+    **Check Metadata**
+
+    This route allows you to obtain the application's metadata.
     """
+
     project_metadata: Dict = get_project_metadata()
     return {
         "status": "online",

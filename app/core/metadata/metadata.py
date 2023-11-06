@@ -6,10 +6,11 @@ import toml
 
 def get_project_metadata() -> Dict:
     """
-    Returns the project metadata as defined in the pyproject.toml file.
+    Gets the project metadata from the pyproject.toml file.
 
-    Returns:
-        A dictionary with metadata
+    **Returns**
+
+    A dictionary containing the project metadata.
     """
 
     pyproject_full_path: str = settings.ROOT_PATH_FOR_DYNACONF + "/pyproject.toml"

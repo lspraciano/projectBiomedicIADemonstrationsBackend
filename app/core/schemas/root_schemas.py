@@ -3,16 +3,18 @@ from pydantic import BaseModel
 
 class RootResponse(BaseModel):
     """
-    Represents the response of a health check.
+    Schema for the root response of the API.
 
-    Attributes:
-        status: The status status of the project.
-        name: The name of the project.
-        version: The version of the project.
-        description: The description of the project.
-        authors: The authors of the project.
-        documentation: The path to documentation of the project.
+    **Attributes:**
+
+    * **status:** The status of the API.
+    * **name:** The name of the API.
+    * **version:** The version of the API.
+    * **description:** A description of the API.
+    * **authors:** A list of the authors of the API.
+    * **documentation:** A link to the API documentation.
     """
+
     status: str
     name: str
     version: str

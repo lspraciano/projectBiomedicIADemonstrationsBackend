@@ -11,7 +11,7 @@ ml_models_dict_path_structure: Dict = {
     },
     "detection": {
         "wbc": {
-            "weights_file_name": "wbc_model.pt",
+            "weights_file_name": "scanned_wbc_model.pt",
             "path": f"{detection_path}",
             "file_net_name": "",
             "net_input_size": 0,

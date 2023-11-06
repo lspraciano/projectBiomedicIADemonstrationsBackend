@@ -20,6 +20,6 @@ responseImage: Dict = {
         "content": {
             "image/jpeg": {}
         },
-        "description": "Return an image in body and the detections in headers",
+        "description": "Return an image in body and the detections in headers key 'Detections' ",
     },
 }

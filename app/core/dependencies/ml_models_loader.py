@@ -29,9 +29,9 @@ def raise_loader_exception(
     )
 
 
-async def wbc_yolo_model_to_detection() -> YOLO:
+async def microscope_wbc_yolo_model_to_detection() -> YOLO:
     """
-    Loads the WBC YOLO model for detection.
+    Loads the MICROSCOPE WBC YOLO model for detection.
 
     **Returns**
 
@@ -42,7 +42,37 @@ async def wbc_yolo_model_to_detection() -> YOLO:
     * **HTTPException**: If the model could not be loaded.
     """
 
-    yolo_model_name: str = "wbc"
+    yolo_model_name: str = "microscope_wbc_model"
+    task: str = "detection"
+
+    yolo_model: Optional[YOLO] = load_yolo_model(
+        yolo_model_name=yolo_model_name,
+        task=task,
+    )
+
+    if not yolo_model:
+        raise raise_loader_exception(
+            ml_model_name=yolo_model_name,
+            task=task,
+        )
+
+    return yolo_model
+
+
+async def scanned_wbc_yolo_model_to_detection() -> YOLO:
+    """
+    Loads the SCANNED WBC YOLO model for detection.
+
+    **Returns**
+
+    A YOLO model loaded for detection.
+
+    **Raises**
+
+    * **HTTPException**: If the model could not be loaded.
+    """
+
+    yolo_model_name: str = "scanned_wbc_model"
     task: str = "detection"
 
     yolo_model: Optional[YOLO] = load_yolo_model(

@@ -36,7 +36,7 @@ if (
         or
         "poetry run python -m run_tests".
 
-        If this is not the case, check the IAHEMSCAN_APP_RUNNING_MODE
+        If this is not the case, check the BIOIADEMON_APP_RUNNING_MODE
         environment variable and try again
         """
     )

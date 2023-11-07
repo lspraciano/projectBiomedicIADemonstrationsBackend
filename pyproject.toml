@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "project-ia-hematology-scanned-slides-backend"
+name = "project-biomedic-ia-demonstrations-backend"
 version = "0.1.0"
 description = ""
 authors = ["Lucas Praciano <luskcct@gmail.com>"]
 readme = "README.md"
 documentation = "/docs"
-packages = [{ include = "project_ia_hematology_scanned_slides_backend" }]
+packages = [{ include = "project-biomedic-ia-demonstrations-backend" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"

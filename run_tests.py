@@ -79,7 +79,7 @@ async def _run_app_tests():
 
 if __name__ == "__main__":
     app_mode: str = "testing"
-    os.environ["IAHEMSCAN_APP_RUNNING_MODE"] = app_mode
+    os.environ["BIOIADEMON_APP_RUNNING_MODE"] = app_mode
 
     import asyncio
     from app.core.database.database import engine_async, ModelBase

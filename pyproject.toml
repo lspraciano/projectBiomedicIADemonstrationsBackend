@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Lucas Praciano <luskcct@gmail.com>"]
 readme = "README.md"
-documentation = "/docs"
+documentation = "https://github.com/lspraciano/projectBiomedicIADemonstrationsBackend"
 packages = [{ include = "project-biomedic-ia-demonstrations-backend" }]
 
 [tool.poetry.dependencies]

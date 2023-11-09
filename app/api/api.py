@@ -24,11 +24,17 @@ def api_factory() -> FastAPI:
         title=project_metadata["name"],
         description=project_metadata["description"],
         version=project_metadata["version"],
+        root_path=f"{settings.API_URL}",
+        servers=[
+
+            {"url": "http://34.172.245.118/api/v1", "description": "Production environment"},
+            {"url": "http://127.0.0.1:8000", "description": "Development environment"},
+        ],
         swagger_ui_parameters={
             "defaultModelsExpandDepth": -1,
             "operationsSorter": "method",
             "filter": True,
-            "docExpansion": None
+            "docExpansion": None,
         },
     )
 

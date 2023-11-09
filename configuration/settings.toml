@@ -1,9 +1,10 @@
 [default]
-API_URL = "/api"
+API_URL = ""
 MAIL_SUPPRESS_SEND = 0
 SERVER_RELOAD = 1
 
 [production]
+API_URL = "/api/v1"
 SERVER_RELOAD = 0
 
 [development]

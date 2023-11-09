@@ -25,6 +25,8 @@ def api_factory() -> FastAPI:
         description=project_metadata["description"],
         version=project_metadata["version"],
         docs_url=f"{settings.API_URL}/docs",
+        redoc_url=f"{settings.API_URL}/redoc",
+        openapi_url=f"{settings.API_URL}/openapi.json",
         servers=[
             {
                 "url": f"http://34.172.245.118",

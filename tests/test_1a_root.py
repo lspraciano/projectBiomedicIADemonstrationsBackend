@@ -11,7 +11,6 @@ async def test_root_returns_correct_status_code(
         async_client: AsyncClient
 ):
     project_metadata: Dict = get_project_metadata()
-    async_client.base_url = "http://"
     response: Response = await async_client.get(
         url="/",
         headers={
@@ -27,7 +26,6 @@ async def test_root_returns_correct_json(
         async_client: AsyncClient
 ):
     project_metadata: Dict = get_project_metadata()
-    async_client.base_url = "http://"
     response: Response = await async_client.get(
         url="/",
         headers={

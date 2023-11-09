@@ -14,5 +14,5 @@ if __name__ == "__main__":
         port=8000,
         workers=4,
         log_level="info",
-        reload=settings.SERVER_RELOAD == 1
+        reload=settings.SERVER_RELOAD == 1,
     )

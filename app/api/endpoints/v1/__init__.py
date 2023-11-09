@@ -7,10 +7,8 @@ api_router: APIRouter = APIRouter()
 
 api_router.include_router(
     root.router,
-    prefix=""
 )
 
 api_router.include_router(
     hematological_slides.router,
-    prefix=settings.API_URL
 )

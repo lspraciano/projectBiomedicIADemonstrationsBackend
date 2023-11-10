@@ -24,6 +24,34 @@ ml_models_dict_path_structure: Dict = {
             "net_input_size": 0,
             "net_class_name": ""
         },
+        "blood_serum_model": {
+            "weights_file_name": "blood_serum_model.pt",
+            "path": f"{detection_path}",
+            "file_net_name": "",
+            "net_input_size": 0,
+            "net_class_name": ""
+        },
+        "ki67_model": {
+            "weights_file_name": "ki67_model.pt",
+            "path": f"{detection_path}",
+            "file_net_name": "",
+            "net_input_size": 0,
+            "net_class_name": ""
+        },
+        "melanoma_model": {
+            "weights_file_name": "melanoma_model.pt",
+            "path": f"{detection_path}",
+            "file_net_name": "",
+            "net_input_size": 0,
+            "net_class_name": ""
+        },
+        "sperm_model": {
+            "weights_file_name": "sperm_model.pt",
+            "path": f"{detection_path}",
+            "file_net_name": "",
+            "net_input_size": 0,
+            "net_class_name": ""
+        },
     },
     "pose": {
     }

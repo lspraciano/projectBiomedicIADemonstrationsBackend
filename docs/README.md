@@ -32,7 +32,7 @@ https://www.lucaspraciano.agency/api/v1/docs"
 
 ## ☄️ Versão Atual
 
-- 1.0
+- 0.1.0
 
 ## 🕹️ Funcionalidades
 

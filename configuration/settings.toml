@@ -1,6 +1,5 @@
 [default]
 API_URL = "/api/v1"
-MAIL_SUPPRESS_SEND = 0
 SERVER_RELOAD = 1
 
 [production]

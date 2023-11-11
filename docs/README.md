@@ -27,7 +27,7 @@ https://www.lucaspraciano.agency/api/v1
 Através do link abaixo você pode acessar a documentação da nossa API
 
 ```
-https://www.lucaspraciano.agency/api/v1/docs"
+https://www.lucaspraciano.agency/api/v1/docs
 ```
 
 ## ☄️ Versão Atual
@@ -35,6 +35,10 @@ https://www.lucaspraciano.agency/api/v1/docs"
 - 0.1.0
 
 ## 🕹️ Funcionalidades
+
+Para realizar boas detecção você deve enviar imagens que se assemelhem as
+que estão como exemplos. Considere o zoom, formato e proporção entre
+altura e largura antes de submeter as imagens a qualquer rota.
 
 ### 📌 Detecção de Leucócitos em Scan
 
@@ -53,6 +57,9 @@ Rota:
 ```
 /hematological-slides/scanned-leukocytes/predict
 ```
+
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Fsperm.jpg)
 
 ### 📌 Detecção de Leucócitos em Ocular
 

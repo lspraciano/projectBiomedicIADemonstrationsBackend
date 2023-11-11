@@ -59,7 +59,7 @@ Rota:
 ```
 
 Imagem de Exemplo:
-[[click para ver a imagem]](images%2Fsperm.jpg)
+[[click para ver a imagem]](images%2Fscanned.jpg)
 
 ### 📌 Detecção de Leucócitos em Ocular
 
@@ -79,6 +79,9 @@ Rota:
 /hematological-slides/microscope-leukocytes/predict
 ```
 
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Focular.jpg)
+
 ### 📌 Detecção de Soro ou Plasma em Tubos
 
 Esta detecção é realizda em tubos para amostras laboratoriais e busca
@@ -91,6 +94,9 @@ Rota:
 ```
 /blood-serum/predict
 ```
+
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Fserum.jpg)
 
 ### 📌 Detecção de Ki67 em células
 
@@ -107,6 +113,9 @@ Rota:
 /ki67/predict
 ```
 
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Fki67.jpg)
+
 ### 📌 Detecção de Possíveis Melanomas
 
 Esta detecção é realizada em imagens de pele que se deseje avaliar
@@ -120,6 +129,9 @@ Rota:
 ```
 /melanoma/predict
 ```
+
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Fmela.jpg)
 
 ### 📌 Detecção de Espermatozoides
 
@@ -136,6 +148,9 @@ Rota:
 ```
 /sperm/predict
 ```
+
+Imagem de Exemplo:
+[[click para ver a imagem]](images%2Fsperm.jpg)
 
 ## 🚀 Clonando Projeto
 

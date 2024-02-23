@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.endpoints.v1 import root, hematological_slides, blood_serum, ki67, melanoma, sperm
+from app.api.endpoints.v1 import root, hematological_slides, blood_serum, ki67, melanoma, sperm, chromosomes
 
 api_router: APIRouter = APIRouter()
 
@@ -26,4 +26,8 @@ api_router.include_router(
 
 api_router.include_router(
     sperm.router,
+)
+
+api_router.include_router(
+    chromosomes.router,
 )

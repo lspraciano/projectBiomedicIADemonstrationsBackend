@@ -52,6 +52,13 @@ ml_models_dict_path_structure: Dict = {
             "net_input_size": 0,
             "net_class_name": ""
         },
+        "chromosomes_model": {
+            "weights_file_name": "chromosomes_model.pt",
+            "path": f"{detection_path}",
+            "file_net_name": "",
+            "net_input_size": 0,
+            "net_class_name": ""
+        },
     },
     "pose": {
     }

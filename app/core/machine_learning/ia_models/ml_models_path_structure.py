@@ -18,7 +18,7 @@ ml_models_dict_path_structure: Dict = {
             "net_class_name": ""
         },
         "microscope_wbc_model": {
-            "weights_file_name": "microscope_wbc_model_v10.pt",
+            "weights_file_name": "white_blood_cells_v7_y10.pt",
             "path": f"{detection_path}",
             "file_net_name": "",
             "net_input_size": 0,

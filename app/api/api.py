@@ -29,7 +29,7 @@ def api_factory() -> FastAPI:
         openapi_url=f"{settings.API_URL}/openapi.json",
         servers=[
             {
-                "url": f"https://www.lucaspraciano.agency",
+                "url": f"http://192.168.1.18:8000",
                 "description": "Production environment"
             },
             {

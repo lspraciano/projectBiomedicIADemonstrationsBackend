@@ -53,7 +53,7 @@ ml_models_dict_path_structure: Dict = {
             "net_class_name": ""
         },
         "chromosomes_model": {
-            "weights_file_name": "chromosomes_model_y9.pt",
+            "weights_file_name": "cromo_v7_yolo10s_1152.pt",
             "path": f"{detection_path}",
             "file_net_name": "",
             "net_input_size": 0,

@@ -29,7 +29,8 @@ async def get_chromosomes_predictions(
     predict_result_list: List[Results] = chromosomes_yolo_model.predict(
         source=image,
         verbose=False,
-        conf=0.5
+        conf=0.5,
+        imgsz=1152
     )
 
     predict_result: Results = next(iter(predict_result_list))

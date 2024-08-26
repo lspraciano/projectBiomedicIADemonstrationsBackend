@@ -7,7 +7,6 @@ RUN apt update && apt install -y libsm6 libxext6 ffmpeg libfontconfig1 libxrende
 
 RUN pip install poetry
 
-COPY ../poetry.lock /api/ia_hem_scan
 COPY ../pyproject.toml /api/ia_hem_scan
 COPY ../alembic.ini /api/ia_hem_scan
 

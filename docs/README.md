@@ -19,7 +19,7 @@ O deploy desta API foi realizando usando google cloud e está disponível
 através do endereço abaixo
 
 ```
-https://www.lucaspraciano.agency/api/v1
+Temporariamente Indisponível...
 ```
 
 ## 📜 Swagger
@@ -27,7 +27,7 @@ https://www.lucaspraciano.agency/api/v1
 Através do link abaixo você pode acessar a documentação da nossa API
 
 ```
-https://www.lucaspraciano.agency/api/v1/docs
+Temporariamente Indisponível...
 ```
 
 ## ☄️ Versão Atual
@@ -269,31 +269,10 @@ Para executar os testes, utilize um dos seguintes comandos:
 python -m run_tests
 ```
 
-## 👷 Rodando em Container
+## ⚡ Rodando em Container
 
 Siga os passos abaixo para configurar iniciar corretamente a aplicação em um
-container:
-
-### 🚧 Preparando...
-
-Para criar o banco de produção, o serviço buscará os valores definidos no arquivo
-".env", localizado na pasta "docker". Este arquivo deve conter as variáveis
-de ambiente necessárias para criar o banco PostgreSQL dentro do contêiner.
-Veja o exemplo abaixo:
-
-```
-POSTGRES_DBS=nome_do_banco
-POSTGRES_USER=nome_do_usuário
-POSTGRES_PASSWORD=senha_do_banco
-```
-
-Tenha em mente que ao rodar o container ele é iniciado em modo de produção,
-pois dentro do arquivo docker-compose.toml a variável de ambiente
-"BIOIADEMON_APP_RUNNING_MODE" é setada com production. Dito isso, certifique-se
-de que o arquivo ".secrets.toml" na pasta "configuration" esteja configurado conforme
-o arquivo ".env".
-
-### ⚡ Rodando o Container
+container
 
 ```bash
 docker-compose up --build

@@ -213,7 +213,8 @@ valores referentes aos bancos de dados que deseje.
 [testing] -> Os valores contidos nessa chave, serão atribuido em modo de teste.
 
 API_URL = "foo" -> Prefixo da API.
-SERVER_RELOAD = 0 -> reinício automático da aplicação. 0 é Não, 1 é Sim.
+SERVER_RELOAD = 0 -> Reinício automático da aplicação. 0 é Não, 1 é Sim.
+SAVE_PREDICTION = 0 -> Salvar predições no banco de dados. 0 é Não, 1 é Sim.
 ```
 
 5. Defina a variável de ambiente "BIOIADEMON_APP_RUNNING_MODE" para o modo

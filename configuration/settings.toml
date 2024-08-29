@@ -1,6 +1,7 @@
 [default]
 API_URL = "/api/v1"
 SERVER_RELOAD = 1
+SAVE_PREDICTION = 0
 
 [production]
 SERVER_RELOAD = 0

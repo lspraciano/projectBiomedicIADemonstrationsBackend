@@ -24,17 +24,18 @@ def api_factory() -> FastAPI:
         title=project_metadata["name"],
         description=project_metadata["description"],
         version=project_metadata["version"],
-        docs_url=f"{settings.API_URL}/docs",
-        redoc_url=f"{settings.API_URL}/redoc",
-        openapi_url=f"{settings.API_URL}/openapi.json",
+        root_path=settings.PROXY_ROOT_PATH,
+        docs_url="/docs",
+        redoc_url="/redoc",
+        openapi_url="/openapi.json",
         servers=[
             {
-                "url": f"http://192.168.1.18:8000",
-                "description": "Production environment"
+                "url": f"http://localhost:8000",
+                "description": "Development environment"
             },
             {
-                "url": f"http://127.0.0.1:8000",
-                "description": "Development environment"
+                "url": f"{settings.from_env('production').API_URL_BASE}",
+                "description": "Production environment"
             },
         ],
         swagger_ui_parameters={
@@ -47,7 +48,7 @@ def api_factory() -> FastAPI:
 
     current_api.include_router(
         api_router,
-        prefix=f"{settings.API_URL}"
+        prefix=f"{settings.API_PREFIX}"
     )
 
     current_api.add_middleware(

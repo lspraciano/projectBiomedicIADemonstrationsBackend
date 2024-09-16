@@ -1,13 +1,17 @@
 [default]
-API_URL = "/api/v1"
+API_PREFIX = "/api/v1"
+PROXY_ROOT_PATH = ""
+API_URL_BASE = ""
 SERVER_RELOAD = 1
 SAVE_PREDICTION = 0
 
 [production]
+PROXY_ROOT_PATH = "/biomedic-ia-demonstration-backend"
+API_URL_BASE = "http://206.42.16.160/biomedic-ia-demonstration-backend"
 SERVER_RELOAD = 0
 
 [development]
 SERVER_RELOAD = 1
 
 [testing]
-MAIL_SUPPRESS_SEND = 1
+SERVER_RELOAD = 0

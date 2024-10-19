@@ -13,6 +13,7 @@ services:
       - .:/home/app/api
     networks:
       - fastapi-network
+    command: [ "/bin/bash", "-c", "alembic upgrade head && uvicorn app.main:app --proxy-headers --host 0.0.0.0 --port 8000 --workers 4"]
     depends_on:
       db:
         condition: service_healthy

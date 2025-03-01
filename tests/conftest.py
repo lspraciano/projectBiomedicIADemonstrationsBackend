@@ -56,7 +56,7 @@ async def async_client() -> Generator:
 
     async with AsyncClient(
             app=app,
-            base_url=f"http://{settings.API_URL_BASE}"
+            base_url=f"http://{settings.API_PREFIX}"
     ) as client, LifespanManager(app):
         yield client
 

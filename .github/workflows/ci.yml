@@ -20,13 +20,13 @@ jobs:
 
     services:
       db:
-        image: postgres:15.2
+        image: postgres:15
         env:
-          POSTGRES_DB: ${{ env.POSTGRES_DB }}
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: abcd1234
+          POSTGRES_DB: ia_hem_scan_development
         ports:
-          - 5432:5432
+          - "5432:5432"
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=5s
@@ -37,36 +37,26 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: '3.11.2'
-#
-#      - name: Install Poetry
-#        run: pip install poetry
-#
-#      - name: Configure Poetry
-#        run: |
-#          poetry config virtualenvs.create true
-#
-#      - name: Install dependencies (Poetry)
-#        run: poetry install --no-root
-#
-#      - name: Apply DB migrations (opcional)
-#        run: |
-#          poetry run alembic upgrade head
-#        env:
-#          BIOIADEMON_DB_URL: ${{ env.BIOIADEMON_DB_URL }}
+      - name: Wait for Postgres to be healthy
+        run: sleep 10
 
-#      - name: Run tests
-#        run: |
-#          poetry run pytest --maxfail=1 --disable-warnings
-#        env:
-#          DATABASE_URL: ${{ env.DB_URL }}
+      - name: Create second DB (ia_hem_scan_test)
+        run: |
+          DB_CONTAINER_ID=$(docker ps -q -f ancestor=postgres:15)
+          docker exec "$DB_CONTAINER_ID" \
+            psql -U postgres -c "CREATE DATABASE ia_hem_scan_testing;"
 
-      - name: Build Docker image (opcional)
+      - name: Build Docker image
         run: |
           docker build \
             -f docker/Dockerfile.api \
             -t lspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} \
             .
+
+      - name: Run tests inside container
+        run: |
+          docker run --rm \
+            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
+            -e BIOIADEMON_DB_URL=${{ env.BIOIADEMON_DB_URL }} \
+            lspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} \
+            poetry run python run_tests.py

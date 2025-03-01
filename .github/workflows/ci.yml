@@ -12,9 +12,7 @@ jobs:
     environment: prod
 
     env:
-      BIOIADEMON_APP_RUNNING_MODE: production
       BIOIADEMON_APP_RUNNING_MODE_TESTING: testing
-      BIOIADEMON_DB_URL: ${{ secrets.BIOIADEMON_DB_URL }}
       BIOIADEMON_DB_URL_TESTING: ${{ secrets.BIOIADEMON_DB_URL_TESTING }}
 
     services:
@@ -48,7 +46,7 @@ jobs:
 
       - name: Run test container
         run: |
-          docker run --rm \
+          docker run --rm  --network host\
             -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
             -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
             myapp:test \

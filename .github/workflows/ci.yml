@@ -37,26 +37,26 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11.2'
-
-      - name: Install Poetry
-        run: pip install poetry
-
-      - name: Configure Poetry
-        run: |
-          poetry config virtualenvs.create true
-
-      - name: Install dependencies (Poetry)
-        run: poetry install --no-root
-
-      - name: Apply DB migrations (opcional)
-        run: |
-          poetry run alembic upgrade head
-        env:
-          BIOIADEMON_DB_URL: ${{ env.BIOIADEMON_DB_URL }}
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11.2'
+#
+#      - name: Install Poetry
+#        run: pip install poetry
+#
+#      - name: Configure Poetry
+#        run: |
+#          poetry config virtualenvs.create true
+#
+#      - name: Install dependencies (Poetry)
+#        run: poetry install --no-root
+#
+#      - name: Apply DB migrations (opcional)
+#        run: |
+#          poetry run alembic upgrade head
+#        env:
+#          BIOIADEMON_DB_URL: ${{ env.BIOIADEMON_DB_URL }}
 
 #      - name: Run tests
 #        run: |

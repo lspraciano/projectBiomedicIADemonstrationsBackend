@@ -68,5 +68,5 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            -t lspraciano/project-biomedic-ia-demonstrationsBackend:${{ github.sha }} \
+            -t lspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} \
             .

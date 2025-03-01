@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    environment: prod
 
     env:
       BIOIADEMON_APP_RUNNING_MODE: production

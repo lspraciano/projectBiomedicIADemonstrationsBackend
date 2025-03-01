@@ -39,27 +39,17 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Build test image
+      - name: Build image
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
-            -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
             -t myapp:test \
             .
 
       - name: Run test container
         run: |
-          docker run --rm myapp:test poetry run python run_tests.py
-
-      - name: Remove test image
-        run: docker rmi myapp:test || true
-
-      - name: Build prod image
-        run: |
-          docker build \
-            -f docker/Dockerfile.api \
-            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
-            -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
-            -t myapp:prod \
-            .
+          docker run --rm \
+            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
+            -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
+            myapp:test \
+            poetry run python run_tests.py

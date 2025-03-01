@@ -41,7 +41,7 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            -t myapp:test \
+            -t lucaspraciano/project-biomedic-ia-demonstrations-backend:v1
             .
 
       - name: Run test container
@@ -49,5 +49,20 @@ jobs:
           docker run --rm  --network host\
             -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
             -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
-            myapp:test \
+            lucaspraciano/project-biomedic-ia-demonstrations-backend:v1 \
             poetry run python run_tests.py
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "lucaspraciano" --password-stdin
+
+      - name: Tag image with commit SHA
+        run: docker tag lucaspraciano/project-biomedic-ia-demonstrations-backend:v1 lucaspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }}
+
+      - name: Push image with commit SHA to Docker Hub
+        run: docker push lucaspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }}
+
+      - name: Tag image as latest
+        run: docker tag lucaspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} lucaspraciano/project-biomedic-ia-demonstrations-backend:latest
+
+      - name: Push latest image to Docker Hub
+        run: docker push lucaspraciano/project-biomedic-ia-demonstrations-backend:latest

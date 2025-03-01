@@ -16,9 +16,6 @@ jobs:
       BIOIADEMON_APP_RUNNING_MODE_TESTING: testing
       BIOIADEMON_DB_URL: ${{ secrets.BIOIADEMON_DB_URL }}
       BIOIADEMON_DB_URL_TESTING: ${{ secrets.BIOIADEMON_DB_URL_TESTING }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
     services:
       db:
@@ -46,7 +43,7 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
+            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
             --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
             -t myapp:test \
             .
@@ -62,7 +59,7 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE }} \
+            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
             --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
             -t myapp:prod \
             .

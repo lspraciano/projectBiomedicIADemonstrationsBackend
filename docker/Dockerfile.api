@@ -5,9 +5,11 @@ WORKDIR /api/ia_hem_scan
 
 RUN apt update && apt install -y libsm6 libxext6 ffmpeg libfontconfig1 libxrender1 libgl1-mesa-glx
 
+RUN pip install --upgrade pip
 RUN pip install poetry
 
 COPY ../pyproject.toml /api/ia_hem_scan
+COPY ../poetry.lock /api/ia_hem_scan
 COPY ../alembic.ini /api/ia_hem_scan
 
 COPY ../app /api/ia_hem_scan/app
@@ -15,4 +17,4 @@ COPY ../configuration /api/ia_hem_scan/configuration
 COPY ../migrations /api/ia_hem_scan/migrations
 
 RUN poetry config virtualenvs.create false
-RUN poetry install
+RUN poetry install --no-root

@@ -66,5 +66,7 @@ jobs:
 
       - name: Build Docker image (opcional)
         run: |
-          docker build -t myuser/my-fastapi-app:${{ github.sha }} .
-          # Se quiser, faça login e docker push aqui
+          docker build \
+            -f docker/Dockerfile.api \
+            -t lspraciano/projectBiomedicIADemonstrationsBackend:${{ github.sha }} \
+            .

@@ -11,6 +11,7 @@ RUN pip install poetry
 COPY ../pyproject.toml /api/ia_hem_scan
 COPY ../poetry.lock /api/ia_hem_scan
 COPY ../alembic.ini /api/ia_hem_scan
+COPY ../run_tests.py /api/ia_hem_scan
 
 COPY ../app /api/ia_hem_scan/app
 COPY ../configuration /api/ia_hem_scan/configuration

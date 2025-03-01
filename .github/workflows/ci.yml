@@ -45,6 +45,7 @@ jobs:
       - name: Build test image
         run: |
           docker build \
+            -f docker/Dockerfile.api \
             --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
             --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
             -t myapp:test \
@@ -60,6 +61,7 @@ jobs:
       - name: Build prod image
         run: |
           docker build \
+            -f docker/Dockerfile.api \
             --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE }} \
             --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
             -t myapp:prod \

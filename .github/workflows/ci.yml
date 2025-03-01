@@ -13,7 +13,9 @@ jobs:
 
     env:
       BIOIADEMON_APP_RUNNING_MODE: production
+      BIOIADEMON_APP_RUNNING_MODE_TESTING: testing
       BIOIADEMON_DB_URL: ${{ secrets.BIOIADEMON_DB_URL }}
+      BIOIADEMON_DB_URL_TESTING: ${{ secrets.BIOIADEMON_DB_URL_TESTING }}
       POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
       POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -24,7 +26,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: abcd1234
-          POSTGRES_DB: ia_hem_scan_development
+          POSTGRES_DB: ia_hem_scan_testing
         ports:
           - "5432:5432"
         options: >-
@@ -34,29 +36,31 @@ jobs:
           --health-retries=5
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
       - name: Wait for Postgres to be healthy
         run: sleep 10
 
-      - name: Create second DB (ia_hem_scan_test)
-        run: |
-          DB_CONTAINER_ID=$(docker ps -q -f ancestor=postgres:15)
-          docker exec "$DB_CONTAINER_ID" \
-            psql -U postgres -c "CREATE DATABASE ia_hem_scan_testing;"
+      - name: Check out code
+        uses: actions/checkout@v3
 
-      - name: Build Docker image
+      - name: Build test image
         run: |
           docker build \
-            -f docker/Dockerfile.api \
-            -t lspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} \
+            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
+            --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
+            -t myapp:test \
             .
 
-      - name: Run tests inside container
+      - name: Run test container
         run: |
-          docker run --rm \
-            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
-            -e BIOIADEMON_DB_URL=${{ env.BIOIADEMON_DB_URL }} \
-            lspraciano/project-biomedic-ia-demonstrations-backend:${{ github.sha }} \
-            poetry run python run_tests.py
+          docker run --rm myapp:test poetry run python run_tests.py
+
+      - name: Remove test image
+        run: docker rmi myapp:test || true
+
+      - name: Build prod image
+        run: |
+          docker build \
+            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ secrets.BIOIADEMON_APP_RUNNING_MODE }} \
+            --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
+            -t myapp:prod \
+            .

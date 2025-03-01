@@ -43,8 +43,8 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
-            --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
+            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE_TESTING }} \
+            -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL_TESTING }} \
             -t myapp:test \
             .
 
@@ -59,7 +59,7 @@ jobs:
         run: |
           docker build \
             -f docker/Dockerfile.api \
-            --build-arg BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
-            --build-arg BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
+            -e BIOIADEMON_APP_RUNNING_MODE=${{ env.BIOIADEMON_APP_RUNNING_MODE }} \
+            -e BIOIADEMON_DB_URL=${{ secrets.BIOIADEMON_DB_URL }} \
             -t myapp:prod \
             .
